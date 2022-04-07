@@ -1,6 +1,6 @@
 version: "3.7"
 services:
-  restaurant-db:
+  demo-db:
     image: mysql:8.0
     platform: linux/amd64
     ports:
@@ -8,8 +8,8 @@ services:
     environment:
       - MYSQL_DATABASE=demo
       - MYSQL_ROOT_PASSWORD=root-pass
-      - MYSQL_USER=restaurant-svc
-      - MYSQL_PASSWORD=restaurant-pass
+      - MYSQL_USER=demo-svc
+      - MYSQL_PASSWORD=demo-pass
       - TZ=UTC
     command: # 명령어 실행
       - --character-set-server=utf8mb4
