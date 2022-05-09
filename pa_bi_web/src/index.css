@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap");
 /* reset */
 
 html,
@@ -126,14 +127,8 @@ table {
 }
 
 /* reset end */
+
 * {
-  font-family: "Nanum Gothic", sans-serif;
-  text-decoration: none;
-}
-.bar {
-  width: 440px;
-  padding: 0 10px;
-  align-content: center;
-  border: 1px Solid #b1b1b1;
-  border-radius: 3px;
+  font-family: "Noto Sans KR", sans-serif !important;
+  color: #000000;
 }
