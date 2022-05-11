@@ -93,7 +93,6 @@ export const MenuList = styled.li`
   &: first-child {
     margin-left: 0px;
   }
-
   a {
     text-decoration: none;
     color: black;

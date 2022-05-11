@@ -42,7 +42,7 @@ export default function Header() {
 
 const MenuData = () => {
   const menuList = MenuListData.map((props) => (
-    <MenuList>
+    <MenuList key={(props.name, props.link)}>
       <Link to={props.link}>{props.name}</Link>
     </MenuList>
   ));

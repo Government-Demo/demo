@@ -45,7 +45,7 @@ const StyledTime = styled(Card.Text)`
   display: inline;
 `;
 
-export default function Index() {
+export default function HomeContainer() {
   return (
     <Container>
       <Caption>임박매물</Caption>
