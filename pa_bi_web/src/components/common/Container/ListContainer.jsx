@@ -1,6 +1,7 @@
-import { Container, Row, Col, Card, Button } from "react-bootstrap";
+import { Container, Row, Col, Card, Button, Pagination } from "react-bootstrap";
 import { Caption, Name, Count, Dropdown, Cost } from "./ListContainer.style";
 import styled from "styled-components";
+import { useSelector } from "react-redux";
 
 const StyledButton = styled(Button)`
   width: 140px;
@@ -74,11 +75,15 @@ const StyledPrice = styled(Card.Text)`
   margin-bottom: 3px;
   display: flex; ;
 `;
-
 const StyledContainer = styled(Container)`
   max-width: 1080px;
-  padding: 0;
 `;
+const StyledPagination = styled(Pagination)`
+  margin-top: 60px;
+  justify-content: center;
+`;
+const StyledPaginationItem = styled(Pagination.Item)``;
+
 export default function ListContainer() {
   return (
     <StyledContainer>
@@ -99,6 +104,7 @@ export default function ListContainer() {
               />
               <StyledBody>
                 <StyledTitle>토토로</StyledTitle>
+
                 <Styledadress>경기도 용인시 기흥구</Styledadress>
                 <StyledPrice>
                   <Cost co="#505050">시작가</Cost>
@@ -118,6 +124,22 @@ export default function ListContainer() {
           </StyledCol>
         ))}
       </Row>
+      <StyledPagination>
+        <Pagination.First />
+        <Pagination.Prev />
+        <StyledPaginationItem active>{1}</StyledPaginationItem>
+        <Pagination.Item>{2}</Pagination.Item>
+        <Pagination.Item>{3}</Pagination.Item>
+        <Pagination.Item>{4}</Pagination.Item>
+        <Pagination.Item>{5}</Pagination.Item>
+        <Pagination.Item>{6}</Pagination.Item>
+        <Pagination.Item>{7}</Pagination.Item>
+        <Pagination.Item>{8}</Pagination.Item>
+        <Pagination.Item>{9}</Pagination.Item>
+        <Pagination.Item>{10}</Pagination.Item>
+        <Pagination.Next />
+        <Pagination.Last />
+      </StyledPagination>
     </StyledContainer>
   );
 }
