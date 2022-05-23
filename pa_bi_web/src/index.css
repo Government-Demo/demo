@@ -129,7 +129,7 @@ table {
 /* reset end */
 
 * {
-  font-family: "Noto Sans KR", sans-serif !important;
+  font-family: "noto-sans-cjk-kr", sans-serif !important;
   color: #000000;
   /* 페이지네이션 */
 }
