@@ -1,0 +1,43 @@
+server:
+  shutdown: graceful
+
+spring:
+  lifecycle:
+    timeout-per-shutdown-phase: 20s
+  jpa:
+    show-sql: true
+    #    database-platform: mysql
+    hibernate:
+      ddl-auto: create
+    defer-datasource-initialization: true
+  datasource:
+    hikari:
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      jdbc-url: jdbc:mysql://localhost:3306/demo?serverTimezone=UTC&characterEncoding=UTF-8
+      username: root
+      password: root-pass
+  flyway:
+    user: root
+    schemas: demo
+    url: jdbc:mysql://localhost:3306/demo?serverTimezone=UTC&characterEncoding=UTF-8
+    enabled: true
+  sql:
+    init:
+      mode: always
+
+
+jwt:
+  header: Authorization
+  #HS512 ????? ??? ??? ??? 512bit, ? 64byte ??? secret key? ???? ??.
+
+  #시크릿 키 값은 BASE64 홈페이지 에서 인코딩
+  #team-fabi-secret-code-reality-mask-smoke-lost-poet-mayday-task-working-in-progress-smoke-lost-poet-mayday-task-working-in-progress
+  secret: dGVhbS1mYWJpLXNlY3JldC1jb2RlLXJlYWxpdHktbWFzay1zbW9rZS1sb3N0LXBvZXQtbWF5ZGF5LXRhc2std29ya2luZy1pbi1wcm9ncmVzcy1zbW9rZS1sb3N0LXBvZXQtbWF5ZGF5LXRhc2std29ya2luZy1pbi1wcm9ncmVzcw==
+  #토큰 만료 시간
+  token-validity-in-seconds: 86400
+
+
+
+logging:
+  level:
+    restaurant: DEBUG
