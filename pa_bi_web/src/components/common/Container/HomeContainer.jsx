@@ -4,6 +4,9 @@ import styled from "styled-components";
 
 // bootstrap css
 
+const StyledContainer = styled(Container)`
+  margin-bottom: 160px;
+`;
 const StyledCard = styled(Card)`
   border: 0px;
   cursor: pointer;
@@ -47,7 +50,7 @@ const StyledTime = styled(Card.Text)`
 
 export default function HomeContainer() {
   return (
-    <Container>
+    <StyledContainer>
       <Caption>임박매물</Caption>
       <Row xs={1} md={2} lg={4} className="g-4">
         {Array.from({ length: 4 }).map((_, idx) => (
@@ -85,6 +88,6 @@ export default function HomeContainer() {
           </Col>
         ))}
       </Row>
-    </Container>
+    </StyledContainer>
   );
 }

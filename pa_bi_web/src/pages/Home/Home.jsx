@@ -1,11 +1,11 @@
-import Header from "../../components/common/Header/Header";
+import Navbar from "../../components/common/Navbar/Navbar";
 import Footer from "../../components/common/Footer/Footer";
 import Container from "../../components/common/Container/HomeContainer";
 import Banner from "../../components/common/Banner/Banner";
 function Home() {
   return (
     <>
-      <Header />
+      <Navbar />
       <Banner />
       <Container />
       <Footer />
