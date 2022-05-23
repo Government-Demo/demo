@@ -131,4 +131,38 @@ table {
 * {
   font-family: "Noto Sans KR", sans-serif !important;
   color: #000000;
+  /* 페이지네이션 */
+}
+.pagination {
+  justify-content: center;
+  margin-top: 60px;
+  margin-bottom: 60px;
+}
+
+ul.pagination li {
+  cursor: pointer;
+  width: 23px;
+  height: 23px;
+  border: 1px solid #e2e2e2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: auto 2px;
+}
+
+ul.pagination li a {
+  text-decoration: none;
+  font-size: 12px;
+  letter-spacing: -0.025em;
+  color: #767676;
+}
+ul.pagination li.active a {
+  color: #0000d8;
+}
+ul.pagination li.active {
+  border: 1px solid #0000d8;
+}
+ul.pagination li a:hover,
+ul.pagination li a.active {
+  color: blue;
 }

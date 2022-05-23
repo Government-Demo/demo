@@ -6,7 +6,7 @@ import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter } from "react-router-dom";
 import { createRoot } from "react-dom/client";
 import { Provider } from "react-redux";
-import ListData from "./components/common/Container/ListData";
+import ListData from "./components/common/List/ListData";
 const rootElement = document.getElementById("root");
 const root = createRoot(rootElement);
 
