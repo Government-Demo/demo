@@ -1,12 +1,4 @@
-import {
-  Nav,
-  Navbar,
-  Container,
-  Form,
-  FormControl,
-  NavDropdown,
-  Button,
-} from "react-bootstrap";
+import { Nav, Navbar, Container, Form, FormControl } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import Category from "./Category";
@@ -44,7 +36,7 @@ function MainNavbar() {
                 placeholder="검색어를 입력해 주세요"
                 className="searchbar"
                 aria-label="Search"
-              />
+              ></FormControl>
             </Form>
           </Nav>
 
