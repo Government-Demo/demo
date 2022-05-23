@@ -18,6 +18,7 @@ export const Count = styled.div`
   font-size: 20px;
   color: #0000d8;
 `;
+
 export const Dropdown = styled.select`
   width: 130px;
   height: 30px;
@@ -29,10 +30,4 @@ export const Dropdown = styled.select`
   letter-spacing: -0.025em;
   margin-left: auto;
   align-items: center;
-`;
-export const Cost = styled.div`
-  color: ${(props) => props.co};
-  &:last-child {
-    margin-left: auto;
-  }
 `;
