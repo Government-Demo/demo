@@ -3,6 +3,9 @@ import { Row, Col, Card, Button } from "react-bootstrap";
 import { Cost } from "./List.style";
 import styled from "styled-components";
 import data from "./ListData";
+import pa from "./Pabi.png";
+import clock from "./Clock.png";
+import { Link } from "react-router-dom";
 
 const StyledButton = styled(Button)`
   width: 140px;
@@ -27,7 +30,6 @@ const StyledCol = styled(Col)`
 `;
 const StyledCard = styled(Card)`
   padding: 18px;
-
   cursor: pointer;
   &:hover {
     background: rgba(220, 220, 255, 0.5);
@@ -68,6 +70,7 @@ const Styledadress = styled(Card.Text)`
   letter-spacing: -0.025em;
   color: #b1b1b1;
   margin-bottom: 13px;
+  text-decoration: none;
 `;
 const StyledPrice = styled(Card.Text)`
   font-weight: 400;
@@ -90,37 +93,42 @@ export default function List() {
     <Row xs={1} md={2} lg={4} className="g-4">
       {list.map((a, i) => (
         <StyledCol>
-          <StyledCard>
-            <ImgBox>
-              <StyledImg variant="top" src={list[i].img} />
-            </ImgBox>
-            <StyledBody>
-              <StyledTitle>{list[i].title}</StyledTitle>
+          <Link to="/" style={{ textDecoration: "none" }}>
+            <StyledCard>
+              <ImgBox>
+                <StyledImg src={list[i].img} onError={handleError}></StyledImg>
+              </ImgBox>
+              <StyledBody>
+                <StyledTitle>{list[i].title}</StyledTitle>
 
-              <Styledadress>{list[i].adress}</Styledadress>
-              <StyledPrice>
-                <Cost co="#505050">시작가</Cost>
-                <Cost co="#505050">
-                  {list[i].strprice.toLocaleString("en")}
-                </Cost>
-              </StyledPrice>
-              <StyledPrice>
-                <Cost co="#505050">평균희망가</Cost>
-                <Cost co="#505050">
-                  {list[i].avgprice.toLocaleString("en")}
-                </Cost>
-              </StyledPrice>
-              <StyledPrice>
-                <Cost co="#0000D8">현재가</Cost>
-                <Cost co="#0000D8">
-                  {list[i].nowprice.toLocaleString("en")}
-                </Cost>
-              </StyledPrice>
-              <StyledButton></StyledButton>
-            </StyledBody>
-          </StyledCard>
+                <Styledadress>{list[i].adress}</Styledadress>
+                <StyledPrice>
+                  <Cost co="#505050">시작가</Cost>
+                  <Cost co="#505050">
+                    {list[i].strprice.toLocaleString("en")}
+                  </Cost>
+                </StyledPrice>
+                <StyledPrice>
+                  <Cost co="#505050">평균희망가</Cost>
+                  <Cost co="#505050">
+                    {list[i].avgprice.toLocaleString("en")}
+                  </Cost>
+                </StyledPrice>
+                <StyledPrice>
+                  <Cost co="#0000D8">현재가</Cost>
+                  <Cost co="#0000D8">
+                    {list[i].nowprice.toLocaleString("en")}
+                  </Cost>
+                </StyledPrice>
+                <StyledButton></StyledButton>
+              </StyledBody>
+            </StyledCard>
+          </Link>
         </StyledCol>
       ))}
     </Row>
   );
 }
+const handleError = (e) => {
+  e.target.src = pa;
+};

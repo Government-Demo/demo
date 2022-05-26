@@ -3,6 +3,7 @@ import { Caption, Name, Count, Dropdown } from "./ListContainer.style";
 import styled from "styled-components";
 import Paginate from "../Paginate/Paginate";
 import List from "../List/List";
+import data from "../../common/List/ListData";
 
 const StyledContainer = styled(Container)`
   max-width: 1080px;
@@ -13,7 +14,7 @@ export default function ListContainer() {
     <StyledContainer>
       <Caption>
         <Name>디지털/가전</Name>
-        <Count>(220)</Count>
+        <Count>({data.length})</Count>
         <SelectBox options={OPTIONS}></SelectBox>
       </Caption>
       <List />

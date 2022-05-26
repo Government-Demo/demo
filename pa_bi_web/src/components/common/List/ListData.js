@@ -30,6 +30,7 @@ let data = [
   },
   {
     id: 2,
+    img: "",
     title: "Grey Yordan",
     adress: "Born in the States",
     strprice: 40000,
@@ -38,6 +39,7 @@ let data = [
   },
   {
     id: 2,
+    img: "",
     title: "Grey Yordan",
     adress: "Born in the States",
     strprice: 40000,
@@ -46,6 +48,7 @@ let data = [
   },
   {
     id: 2,
+    img: "",
     title: "Grey Yordan",
     adress: "Born in the States",
     strprice: 40000,
@@ -54,6 +57,7 @@ let data = [
   },
   {
     id: 2,
+    img: "",
     title: "Grey Yordan",
     adress: "Born in the States",
     strprice: 40000,
@@ -62,6 +66,7 @@ let data = [
   },
   {
     id: 2,
+    img: "",
     title: "Grey Yordan",
     adress: "Born in the States",
     strprice: 40000,
@@ -70,6 +75,7 @@ let data = [
   },
   {
     id: 2,
+    img: "",
     title: "Grey Yordan",
     adress: "Born in the States",
     strprice: 40000,
@@ -78,6 +84,7 @@ let data = [
   },
   {
     id: 2,
+    img: "",
     title: "Grey Yordan",
     adress: "Born in the States",
     strprice: 40000,
@@ -86,6 +93,7 @@ let data = [
   },
   {
     id: 2,
+    img: "",
     title: "Grey Yordan",
     adress: "Born in the States",
     strprice: 40000,
@@ -94,6 +102,16 @@ let data = [
   },
   {
     id: 2,
+    img: "",
+    title: "Grey Yordan",
+    adress: "Born in the States",
+    strprice: 40000,
+    avgprice: 30000,
+    nowprice: 20000,
+  },
+  {
+    id: 2,
+    img: "",
     title: "Grey Yordan",
     adress: "Born in the States",
     strprice: 40000,
