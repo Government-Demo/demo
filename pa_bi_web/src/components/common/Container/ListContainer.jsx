@@ -13,7 +13,7 @@ export default function ListContainer() {
   return (
     <StyledContainer>
       <Caption>
-        <Name>디지털/가전</Name>
+        <Name>전체</Name>
         <Count>({data.length})</Count>
         <SelectBox options={OPTIONS}></SelectBox>
       </Caption>

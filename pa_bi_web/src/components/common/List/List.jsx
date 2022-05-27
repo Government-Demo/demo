@@ -1,10 +1,11 @@
 import { useState } from "react";
 import { Row, Col, Card, Button } from "react-bootstrap";
-import { Cost } from "./List.style";
+import { Box, Cost } from "./List.style";
 import styled from "styled-components";
 import data from "./ListData";
 import pa from "./Pabi.png";
 import clock from "./Clock.png";
+import heart from "./하트.png";
 import { Link } from "react-router-dom";
 
 const StyledButton = styled(Button)`
@@ -71,6 +72,17 @@ const Styledadress = styled(Card.Text)`
   color: #b1b1b1;
   margin-bottom: 13px;
   text-decoration: none;
+
+  &:last-child {
+    margin-left: auto;
+    font-size: 14px;
+    line-height: 16px;
+    letter-spacing: -0.025em;
+    color: #000000;
+  }
+  img {
+    margin-right: 5px;
+  }
 `;
 const StyledPrice = styled(Card.Text)`
   font-weight: 400;
@@ -88,42 +100,53 @@ const StyledImg = styled(Card.Img)``;
 
 export default function List() {
   let [list] = useState(data);
+  let [wish, setwish] = useState(0);
 
   return (
     <Row xs={1} md={2} lg={4} className="g-4">
-      {list.map((a, i) => (
+      {Array.from({ length: 12 }).map((a, i) => (
         <StyledCol>
-          <Link to="/" style={{ textDecoration: "none" }}>
-            <StyledCard>
-              <ImgBox>
-                <StyledImg src={list[i].img} onError={handleError}></StyledImg>
-              </ImgBox>
-              <StyledBody>
-                <StyledTitle>{list[i].title}</StyledTitle>
+          <StyledCard>
+            <ImgBox>
+              <StyledImg src={list[i].img} onError={handleError}></StyledImg>
+            </ImgBox>
+            <StyledBody>
+              <StyledTitle>{list[i].title}</StyledTitle>
 
+              <Box>
                 <Styledadress>{list[i].adress}</Styledadress>
-                <StyledPrice>
-                  <Cost co="#505050">시작가</Cost>
-                  <Cost co="#505050">
-                    {list[i].strprice.toLocaleString("en")}
-                  </Cost>
-                </StyledPrice>
-                <StyledPrice>
-                  <Cost co="#505050">평균희망가</Cost>
-                  <Cost co="#505050">
-                    {list[i].avgprice.toLocaleString("en")}
-                  </Cost>
-                </StyledPrice>
-                <StyledPrice>
-                  <Cost co="#0000D8">현재가</Cost>
-                  <Cost co="#0000D8">
-                    {list[i].nowprice.toLocaleString("en")}
-                  </Cost>
-                </StyledPrice>
+                <Styledadress
+                  onClick={() => {
+                    setwish(wish + 1);
+                  }}
+                >
+                  <img src={heart} alt="heart" />
+                  {wish}
+                </Styledadress>
+              </Box>
+              <StyledPrice>
+                <Cost co="#505050">시작가</Cost>
+                <Cost co="#505050">
+                  {list[i].strprice.toLocaleString("en")}
+                </Cost>
+              </StyledPrice>
+              <StyledPrice>
+                <Cost co="#505050">평균희망가</Cost>
+                <Cost co="#505050">
+                  {list[i].avgprice.toLocaleString("en")}
+                </Cost>
+              </StyledPrice>
+              <StyledPrice>
+                <Cost co="#0000D8">현재가</Cost>
+                <Cost co="#0000D8">
+                  {list[i].nowprice.toLocaleString("en")}
+                </Cost>
+              </StyledPrice>
+              <Link to="/" style={{ textDecoration: "none" }}>
                 <StyledButton></StyledButton>
-              </StyledBody>
-            </StyledCard>
-          </Link>
+              </Link>
+            </StyledBody>
+          </StyledCard>
         </StyledCol>
       ))}
     </Row>
