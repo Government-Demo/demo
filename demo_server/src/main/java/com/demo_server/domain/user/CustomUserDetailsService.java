@@ -1,4 +1,4 @@
-package com.demo_server.service;
+package com.demo_server.domain.user;
 
 import com.demo_server.domain.user.User;
 import com.demo_server.infrastructure.user.UserRepository;

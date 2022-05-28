@@ -1,4 +1,4 @@
-package com.demo_server.config.category;
+package com.demo_server.domain.category;
 
 import javax.persistence.*;
 

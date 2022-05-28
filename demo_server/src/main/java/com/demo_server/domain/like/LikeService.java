@@ -1,6 +1,5 @@
-package com.demo_server.service;
+package com.demo_server.domain.like;
 
-import com.demo_server.domain.like.Like;
 import com.demo_server.domain.user.User;
 import com.demo_server.repository.LikeRepository;
 import org.springframework.stereotype.Service;
@@ -9,7 +8,7 @@ import org.springframework.stereotype.Service;
 public class LikeService {
 
   static LikeRepository likeRepository;
- 
+
   public static void likeInsert(Like like, User user) {
     like.setUser(user);
     likeRepository.save(like);

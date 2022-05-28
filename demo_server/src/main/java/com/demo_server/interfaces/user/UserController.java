@@ -2,6 +2,7 @@ package com.demo_server.interfaces.user;
 
 
 import com.demo_server.application.user.UserFacade;
+import com.demo_server.common.response.CommonResponse;
 import javax.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -25,11 +26,11 @@ public class UserController {
   }
 
   @PostMapping("/signup")
-  public ResponseEntity<UserDto.UserResponse> signup(
+  public CommonResponse signup(
       @Valid @RequestBody UserDto.SignupUserRequest request) {
     var command = userDtoMapper.of(request);
     var userInfo = userFacade.signup(command);
     var response = userDtoMapper.of(userInfo);
-    return ResponseEntity.ok(response);
+    return CommonResponse.success(response);
   }
 }
