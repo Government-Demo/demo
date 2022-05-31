@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const Cost = styled.div`
+export const Cost = styled.span`
   color: ${(props) => props.co};
 
   font-weight: ${(props) => props.we};
@@ -15,4 +15,16 @@ export const Box = styled.div`
   height: 100%;
   align-items: center;
   margin-bottom: 10px;
+`;
+export const StyledTime = styled.span`
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 36px;
+  letter-spacing: -0.025em;
+  text-align: right;
+  margin-left: auto;
+  margin-top: auto;
+  img {
+    margin-right: 10px;
+  }
 `;

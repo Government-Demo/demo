@@ -105,7 +105,7 @@ export default function List() {
   return (
     <Row xs={1} md={2} lg={4} className="g-4">
       {Array.from({ length: 12 }).map((a, i) => (
-        <StyledCol>
+        <StyledCol key={list[i].id}>
           <StyledCard>
             <ImgBox>
               <StyledImg src={list[i].img} onError={handleError}></StyledImg>

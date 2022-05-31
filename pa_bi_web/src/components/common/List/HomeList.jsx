@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Row, Col, Card } from "react-bootstrap";
-import { Box, Cost } from "./List.style";
+import { Box, Cost, StyledTime } from "./List.style";
 import styled from "styled-components";
 import data from "./ListData";
 import icon from "./장소아이콘.png";
@@ -57,18 +57,7 @@ const StyledPrice = styled(Card.Text)`
   margin-bottom: 3px;
   display: flex;
 `;
-const StyledTime = styled(Card.Text)`
-  font-weight: 700;
-  font-size: 24px;
-  line-height: 36px;
-  letter-spacing: -0.025em;
-  text-align: right;
-  margin-left: auto;
-  margin-top: auto;
-  img {
-    margin-right: 10px;
-  }
-`;
+
 const ImgBox = styled.div`
   height: 220px;
   overflow: hidden;
@@ -83,7 +72,7 @@ export default function HomeList() {
   return (
     <Row xs={1} md={2} lg={4} className="g-4">
       {Array.from({ length: 4 }).map((a, i) => (
-        <StyledCol>
+        <StyledCol key={list[i].id}>
           <StyledCard>
             <ImgBox>
               <StyledImg
