@@ -7,6 +7,7 @@ import MyPage from "./pages/Mypage/Mypage";
 import All from "./pages/All/All";
 import Digital from "./pages/Digital/Digital";
 import NotFound from "./pages/NotFound/NotFound";
+import DetailPage from "./pages/DetailPage/DetailPage";
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
       {/* <Route path="/login" element={<Login />} />
       <Route path="/register" element={<Register />} />
       <Route path="/mypage" element={<MyPage />} /> */}
+      <Route path="/detail/:id" element={<DetailPage />} />
       <Route path="/all" element={<All />} />
       <Route path="/digital" element={<Digital />} />
       <Route path="/" element={<Home />} />

@@ -14,7 +14,6 @@ export const Box = styled.div`
   display: flex;
   height: 100%;
   align-items: center;
-  margin-bottom: 10px;
 `;
 export const StyledTime = styled.span`
   font-weight: 700;

@@ -4,9 +4,10 @@ import styled from "styled-components";
 import Paginate from "../Paginate/Paginate";
 import List from "../List/List";
 import data from "../../common/List/ListData";
+import Pagination from "../Paginate/Pagination";
 
 const StyledContainer = styled(Container)`
-  max-width: 1080px;
+  max-width: 1280px;
 `;
 
 export default function ListContainer() {
@@ -18,7 +19,9 @@ export default function ListContainer() {
         <SelectBox options={OPTIONS}></SelectBox>
       </Caption>
       <List />
-      <Paginate />
+
+      {/* <Paginate /> */}
+      {/* <Pagination /> */}
     </StyledContainer>
   );
 }

@@ -119,5 +119,4 @@ let data = [
     nowprice: 20000,
   },
 ];
-
 export default data;

@@ -4,7 +4,7 @@ import { Box, Cost } from "./List.style";
 import styled from "styled-components";
 import data from "./ListData";
 import pa from "./Pabi.png";
-import { useParams } from "react-router-dom";
+import heart from "./하트.png";
 import { Link } from "react-router-dom";
 import axios from "axios";
 
@@ -18,9 +18,8 @@ const StyledButton = styled(Button)`
   font-size: 18px;
   line-height: 27px;
   letter-spacing: -0.025em;
-  display: none;
+  display: block;
   margin: 20px auto 3px;
-
   &::after {
     content: "⏰ 11:11:11";
     transition-duration: 0.3s;
@@ -28,9 +27,10 @@ const StyledButton = styled(Button)`
   }
 `;
 const StyledCol = styled(Col)`
-  padding: 10px;
+  padding: 4px;
 `;
 const StyledCard = styled(Card)`
+  padding: 18px;
   cursor: pointer;
   &:hover {
     background: rgba(220, 220, 255, 0.5);
@@ -57,7 +57,7 @@ const StyledCard = styled(Card)`
   }
 `;
 const StyledBody = styled(Card.Body)`
-  padding: 16px;
+  padding: 16px 0 0 0;
 `;
 const StyledTitle = styled(Card.Title)`
   font-size: 14px;
@@ -72,6 +72,17 @@ const Styledadress = styled(Card.Text)`
   color: #b1b1b1;
   margin-bottom: 13px;
   text-decoration: none;
+
+  &:last-child {
+    margin-left: auto;
+    font-size: 14px;
+    line-height: 16px;
+    letter-spacing: -0.025em;
+    color: #000000;
+  }
+  img {
+    margin-right: 5px;
+  }
 `;
 const StyledPrice = styled(Card.Text)`
   font-weight: 400;
@@ -82,15 +93,14 @@ const StyledPrice = styled(Card.Text)`
   display: flex; ;
 `;
 const ImgBox = styled.div`
-  height: 220px;
-
+  height: 162px;
   overflow: hidden;
 `;
 const StyledImg = styled(Card.Img)``;
 
 export default function List() {
   let [list, setList] = useState(data);
-  let { id } = useParams();
+  let [wish, setwish] = useState(0);
 
   return (
     <Row xs={1} md={2} lg={4} className="g-4">
@@ -101,11 +111,11 @@ export default function List() {
               <StyledImg src={list[i].img} onError={handleError}></StyledImg>
             </ImgBox>
             <StyledBody>
-              <Box>
-                <StyledTitle>{list[i].title} </StyledTitle>
-              </Box>
-              <Styledadress>{list[i].adress}</Styledadress>
+              <StyledTitle>{list[i].title}</StyledTitle>
 
+              <Box>
+                <Styledadress>{list[i].adress}</Styledadress>
+              </Box>
               <StyledPrice>
                 <Cost co="#505050">시작가</Cost>
                 <Cost co="#505050">
