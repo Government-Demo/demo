@@ -17,15 +17,11 @@ const InputField = styled.input`
   color: #767676;
   padding: 8px 19px 9px 19px;
 `;
-const SearchIcon = styled(BiSearch)`
-  position: absolute;
-`;
 
 export default function Search() {
   return (
     <SearchBar>
       <InputField type={"text"} placeholder="검색어를 입력해 주세요" />
-      <SearchIcon />
     </SearchBar>
   );
 }

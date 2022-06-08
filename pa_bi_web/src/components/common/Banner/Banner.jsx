@@ -1,4 +1,4 @@
-import { Image, Text, Boxes, Box, Icon, TextBox, Main } from "./Banner.style";
+import { Image, Text, Boxes, Box, TextBox, Main } from "./Banner.style";
 import Logo from "./logo.png";
 export default function Banner() {
   return (
