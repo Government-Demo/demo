@@ -71,3 +71,19 @@ export const Cost = styled.span`
     margin-left: auto;
   }
 `;
+export const NoticeTitle = styled.div`
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 20px;
+  letter-spacing: -0.025em;
+  margin-top: 20px;
+  margin-bottom: 5px;
+`;
+
+export const Notice = styled.div`
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 22px;
+  color: #767676;
+  letter-spacing: -0.025em;
+`;
