@@ -1,30 +1,41 @@
 import { useState } from "react";
-import { Row, Col, Card, Button } from "react-bootstrap";
+import { Row, Col, Card } from "react-bootstrap";
 import { Box, Cost } from "./List.style";
 import styled from "styled-components";
 import data from "./ListData";
 import pa from "./Pabi.png";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 import axios from "axios";
 
-const StyledButton = styled(Button)`
-  width: 140px;
-  height: 40px;
-  background: #f1f1f5;
-  border: 1px solid #b1b1b1;
-  border-radius: 25px;
+const StyledButton = styled.button`
+  position: absolute;
+  visibility: hidden;
+  opacity: 0;
+  margin: 50px;
+  width: 200px;
+  height: 200px;
+  top: 89px;
+  left: 49px;
+  border-radius: 50%;
+  border: 2px solid #9393ff;
   font-weight: 700;
-  font-size: 18px;
-  line-height: 27px;
-  letter-spacing: -0.025em;
-  display: none;
-  margin: 20px auto 3px;
+  font-size: 32px;
+  margin: 0 auto;
+  background: rgba(220, 220, 255, 0.5);
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s;
 
-  &::after {
-    content: "⏰ 11:11:11";
-    transition-duration: 0.3s;
-    color: #000000;
+  &:hover {
+    font-weight: 500;
+    font-size: 30px;
+    border: 2px solid #5252ff;
+    background: rgba(157, 157, 157, 0.5);
+    color: #ffffff;
+  }
+  &:hover::after {
+    content: "응찰하기";
   }
 `;
 const StyledCol = styled(Col)`
@@ -41,19 +52,9 @@ const StyledCard = styled(Card)`
     background: #dcdcff;
   }
   &:hover ${StyledButton} {
-    background: #5252ff;
-    border: 1px solid #5252ff;
-    transition-duration: 0.3s;
-  }
-  &:hover ${StyledButton}:after {
-    content: "응찰하기";
-    transition-duration: 0.3s;
-    color: #ffffff;
-  }
-  &:active ${StyledButton} {
-    background: #09098f;
-    color: #ffffff;
-    transition-duration: 0.1s;
+    visibility: visible;
+    opacity: 1;
+    content: "ㅎㅇ";
   }
 `;
 const StyledBody = styled(Card.Body)`
@@ -83,20 +84,24 @@ const StyledPrice = styled(Card.Text)`
 `;
 const ImgBox = styled.div`
   height: 220px;
-
   overflow: hidden;
 `;
 const StyledImg = styled(Card.Img)``;
 
 export default function List() {
   let [list, setList] = useState(data);
-  let { id } = useParams();
+  let navigate = useNavigate();
 
   return (
     <Row xs={1} md={2} lg={4} className="g-4">
       {Array.from({ length: 12 }).map((a, i) => (
         <StyledCol key={list[i].id}>
           <StyledCard>
+            <StyledButton
+              onClick={() => {
+                navigate("/detail/" + list[i].id);
+              }}
+            ></StyledButton>
             <ImgBox>
               <StyledImg src={list[i].img} onError={handleError}></StyledImg>
             </ImgBox>
@@ -124,9 +129,7 @@ export default function List() {
                   {list[i].nowprice.toLocaleString("en")}
                 </Cost>
               </StyledPrice>
-              <Link to="/" style={{ textDecoration: "none" }}>
-                <StyledButton></StyledButton>
-              </Link>
+              <Link to="/" style={{ textDecoration: "none" }}></Link>
             </StyledBody>
           </StyledCard>
         </StyledCol>
