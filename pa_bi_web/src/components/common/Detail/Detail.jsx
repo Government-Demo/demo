@@ -1,4 +1,3 @@
-import { render } from "@testing-library/react";
 import { useState } from "react";
 import { Container, Tabs, Tab } from "react-bootstrap";
 
@@ -29,6 +28,20 @@ const StyledContainer = styled(Container)`
     li {
       margin-left: 10px;
     }
+  }
+
+  .nav-link {
+    justify-content: center;
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 22px;
+    width: 418.6px;
+    height: 55px;
+    color: #767676;
+  }
+  .nav-link.active {
+    color: #ffffff;
+    background: #0000d8;
   }
 `;
 const StyledTabs = styled(Tabs)``;

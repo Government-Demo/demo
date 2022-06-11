@@ -18,6 +18,7 @@ export const ImgBox = styled.div`
   height: 750px;
   border: 1px solid black;
   display: inline-block;
+  margin-bottom: 100px;
 `;
 export const TextBox = styled.div`
   float: right;
