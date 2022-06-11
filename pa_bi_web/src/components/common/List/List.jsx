@@ -6,7 +6,6 @@ import data from "./ListData";
 import pa from "./Pabi.png";
 import { useNavigate, useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
-import axios from "axios";
 
 const StyledButton = styled.button`
   position: absolute;
@@ -66,7 +65,7 @@ const StyledTitle = styled(Card.Title)`
   letter-spacing: -0.025em;
   margin-bottom: 2px;
 `;
-const Styledadress = styled(Card.Text)`
+const Styledaddress = styled(Card.Text)`
   font-size: 13px;
   line-height: 19px;
   letter-spacing: -0.025em;
@@ -109,7 +108,7 @@ export default function List() {
               <Box>
                 <StyledTitle>{list[i].title} </StyledTitle>
               </Box>
-              <Styledadress>{list[i].adress}</Styledadress>
+              <Styledaddress>{list[i].address}</Styledaddress>
 
               <StyledPrice>
                 <Cost co="#505050">시작가</Cost>
@@ -118,9 +117,9 @@ export default function List() {
                 </Cost>
               </StyledPrice>
               <StyledPrice>
-                <Cost co="#505050">평균희망가</Cost>
+                <Cost co="#505050">즉시 구입가</Cost>
                 <Cost co="#505050">
-                  {list[i].avgprice.toLocaleString("en")}
+                  {list[i].buyprice.toLocaleString("en")}
                 </Cost>
               </StyledPrice>
               <StyledPrice>
