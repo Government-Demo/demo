@@ -1,6 +1,8 @@
 import { Image, Text, Boxes, Box, TextBox, Main } from "./Banner.style";
+import { useNavigate } from "react-router-dom";
 import Logo from "./logo.png";
 export default function Banner() {
+  let navigate = useNavigate();
   return (
     <Image>
       <Main>
@@ -11,7 +13,13 @@ export default function Banner() {
         </TextBox>
       </Main>
       <Boxes>
-        <Box>게시글 작성</Box>
+        <Box
+          onClick={() => {
+            navigate("/write");
+          }}
+        >
+          게시글 작성
+        </Box>
         <Box>진행형 매물</Box>
         <Box>임박 매물</Box>
         <Box>인기 매물</Box>

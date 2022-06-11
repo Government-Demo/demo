@@ -4,7 +4,7 @@ import { Box, Cost } from "./List.style";
 import styled from "styled-components";
 import data from "./ListData";
 import pa from "./Pabi.png";
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 
 const StyledButton = styled.button`
@@ -27,8 +27,8 @@ const StyledButton = styled.button`
   transition: all 0.3s;
 
   &:hover {
-    font-weight: 500;
-    font-size: 30px;
+    font-weight: 700;
+    font-size: 32px;
     border: 2px solid #5252ff;
     background: rgba(157, 157, 157, 0.5);
     color: #ffffff;

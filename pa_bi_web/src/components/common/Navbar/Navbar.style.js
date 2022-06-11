@@ -75,7 +75,7 @@ export const SubHeader = styled.div`
 export const MenuList = styled.li`
   margin-left: 80px;
 
-  &: first-child {
+  &:first-child {
     margin-left: 0px;
   }
   a {
@@ -91,5 +91,4 @@ export const MenuList = styled.li`
     padding-bottom: 15px;
     transition-duration: 0.3s;
   }
-  a: ;
 `;
