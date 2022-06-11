@@ -8,7 +8,7 @@ spring:
     show-sql: true
     #    database-platform: mysql
     hibernate:
-      ddl-auto: create
+      ddl-auto: update
     defer-datasource-initialization: true
   datasource:
     hikari:
@@ -16,6 +16,8 @@ spring:
       jdbc-url: jdbc:mysql://localhost:3306/demo?serverTimezone=UTC&characterEncoding=UTF-8
       username: root
       password: root-pass
+
+    initialization-mode: never
   flyway:
     user: root
     schemas: demo
