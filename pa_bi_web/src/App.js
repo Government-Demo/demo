@@ -8,6 +8,7 @@ import All from "./pages/All/All";
 import Digital from "./pages/Digital/Digital";
 import NotFound from "./pages/NotFound/NotFound";
 import DetailPage from "./pages/DetailPage/DetailPage";
+import WritePage from "./pages/WritePage/WritePage";
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
       {/* <Route path="/login" element={<Login />} />
       <Route path="/register" element={<Register />} />
       <Route path="/mypage" element={<MyPage />} /> */}
+      <Route path="/Write" element={<WritePage />} />
       <Route path="/detail/:id" element={<DetailPage />} />
       <Route path="/all" element={<All />} />
       <Route path="/digital" element={<Digital />} />
