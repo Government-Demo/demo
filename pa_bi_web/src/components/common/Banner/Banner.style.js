@@ -1,6 +1,5 @@
 import styled from "styled-components";
 import img from "./Img.png";
-import logo from "./logo.png";
 
 export const Image = styled.div`
   height: 548px;
@@ -38,11 +37,12 @@ export const Boxes = styled.div`
 `;
 export const Box = styled.div`
   cursor: pointer;
-  width: 180px;
-  height: 55px;
+  width: 120px;
+  height: 48px;
   border-radius: 10px;
-  font-size: 18px;
-  line-height: 27px;
+  font-weight: 700;
+  font-size: 15px;
+  line-height: 22px;
   text-align: center;
   padding: 13px 0px;
   background: #f1f1f5;

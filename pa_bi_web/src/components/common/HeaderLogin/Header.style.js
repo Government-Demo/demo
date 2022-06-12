@@ -88,7 +88,7 @@ export const SubHeader = styled.div`
 
 export const MenuList = styled.li`
   margin-left: 20px;
-  &: first-child {
+  &:first-child {
     margin-left: 0px;
   }
 

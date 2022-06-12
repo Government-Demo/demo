@@ -20,7 +20,8 @@ export default function Banner() {
         >
           게시글 작성
         </Box>
-        <Box>진행형 매물</Box>
+        <Box>진행중인 매물</Box>
+
         <Box>임박 매물</Box>
         <Box>인기 매물</Box>
       </Boxes>

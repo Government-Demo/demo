@@ -128,7 +128,6 @@ export default function List() {
                   {list[i].nowprice.toLocaleString("en")}
                 </Cost>
               </StyledPrice>
-              <Link to="/" style={{ textDecoration: "none" }}></Link>
             </StyledBody>
           </StyledCard>
         </StyledCol>
