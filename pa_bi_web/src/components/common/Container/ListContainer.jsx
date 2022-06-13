@@ -5,12 +5,15 @@ import Paginate from "../Paginate/Paginate";
 import List from "../List/List";
 import data from "../../common/List/ListData";
 import Pagination from "../Paginate/Pagination";
+import { useEffect } from "react";
+import API from "../../Api/Api";
 
 const StyledContainer = styled(Container)`
   max-width: 1280px;
 `;
 
 export default function ListContainer() {
+  useEffect(() => {});
   return (
     <StyledContainer>
       <Caption>
@@ -20,7 +23,7 @@ export default function ListContainer() {
       </Caption>
       <List />
 
-      {/* <Paginate /> */}
+      <Paginate />
       {/* <Pagination /> */}
     </StyledContainer>
   );

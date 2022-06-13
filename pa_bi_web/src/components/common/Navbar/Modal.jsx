@@ -1,8 +1,9 @@
 import { useState } from "react";
 import { Modal } from "react-bootstrap";
-import { createRoot } from "react-dom/client";
 import styled from "styled-components";
 import pa from "./Logo.png";
+import { useNavigate } from "react-router-dom";
+
 const Sign = styled.div`
   cursor: pointer;
   font-weight: 700;
@@ -70,20 +71,22 @@ const RememberLabel = styled.label`
   font-size: 12px;
 `;
 const Find = styled.div`
+  cursor: pointer;
   font-weight: 400;
   font-size: 12px;
-
   margin-left: auto;
 `;
 const Close = styled.div`
   font-weight: 400;
   font-size: 14px;
   margin-top: 30px;
+  color: #767676;
 `;
 
 export default function Example() {
-  const [show, setShow] = useState(false);
+  let navigate = useNavigate();
 
+  const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
@@ -104,10 +107,29 @@ export default function Example() {
           <Box>
             <Remember type={"checkbox"} />
             <RememberLabel>로그인 상태 유지</RememberLabel>
-            <Find>아이디/비밀번호 찾기</Find>
+            <Find
+              onClick={() => {
+                handleClose();
+                navigate("/");
+              }}
+            >
+              아이디/비밀번호 찾기
+            </Find>
           </Box>
           <Button type={"submit"} value={"로그인"} />
-          <Close>회원가입이 필요없으신가요? 둘러보기</Close>
+          <Close>
+            회원가입이 필요없으신가요?{" "}
+            {
+              <span
+                onClick={() => {
+                  handleClose();
+                }}
+                style={{ color: "#000000", cursor: "pointer" }}
+              >
+                둘러보기 ＞
+              </span>
+            }
+          </Close>
         </StyledModalBody>
       </StyledModal>
     </>
