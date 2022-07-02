@@ -32,7 +32,7 @@ const StyledTitle = styled(Card.Title)`
   letter-spacing: -0.025em;
   margin-bottom: 5px;
 `;
-const Styledadress = styled(Card.Text)`
+const Styledaddress = styled(Card.Text)`
   font-size: 12px;
   line-height: 18px;
   letter-spacing: -0.025em;
@@ -84,16 +84,16 @@ export default function HomeList() {
             <StyledBody>
               <StyledTitle>{list[i].title}</StyledTitle>
               <Box>
-                <img src={icon} alt="adress" />
-                <Styledadress>{list[i].adress}</Styledadress>
-                <Styledadress
+                <img src={icon} alt="address" />
+                <Styledaddress>{list[i].address}</Styledaddress>
+                <Styledaddress
                   onClick={() => {
                     setwish(wish + 1);
                   }}
                 >
                   <img src={heart} alt="heart" />
                   {wish}
-                </Styledadress>
+                </Styledaddress>
               </Box>
 
               <StyledPrice>

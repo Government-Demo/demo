@@ -6,7 +6,6 @@ import List from "../List/List";
 import data from "../../common/List/ListData";
 import Pagination from "../Paginate/Pagination";
 import { useEffect } from "react";
-import API from "../../Api/Api";
 
 const StyledContainer = styled(Container)`
   max-width: 1280px;
@@ -17,7 +16,7 @@ export default function ListContainer() {
   return (
     <StyledContainer>
       <Caption>
-        <Name>전체</Name>
+        <Name>{}</Name>
         <Count>({data.length})</Count>
         <SelectBox options={OPTIONS}></SelectBox>
       </Caption>

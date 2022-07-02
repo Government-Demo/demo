@@ -1,11 +1,10 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import axios from "axios";
 import { Row, Col, Card } from "react-bootstrap";
 import { Box, Cost } from "./List.style";
 import styled from "styled-components";
-import data from "./ListData";
 import pa from "./Pabi.png";
 import { useNavigate } from "react-router-dom";
-import { Link } from "react-router-dom";
 
 const StyledButton = styled.button`
   position: absolute;
@@ -87,18 +86,28 @@ const ImgBox = styled.div`
 `;
 const StyledImg = styled(Card.Img)``;
 
-export default function List() {
-  let [list, setList] = useState(data);
+const List = () => {
+  let [list, setList] = useState([]);
   let navigate = useNavigate();
-
+  useEffect(() => {
+    const getList = () => {
+      axios
+        .get("/api/auction")
+        .then((response) => {
+          setList(response.data.data);
+        })
+        .catch(() => console.log("실패"));
+    };
+    getList();
+  }, []);
   return (
     <Row xs={1} md={2} lg={4} className="g-4">
-      {Array.from({ length: 12 }).map((a, i) => (
-        <StyledCol key={list[i].id}>
+      {list.map((a, i) => (
+        <StyledCol key={i}>
           <StyledCard>
             <StyledButton
               onClick={() => {
-                navigate("/detail/" + list[i].id);
+                navigate("/detail/" + i);
               }}
             ></StyledButton>
             <ImgBox>
@@ -108,24 +117,25 @@ export default function List() {
               <Box>
                 <StyledTitle>{list[i].title} </StyledTitle>
               </Box>
-              <Styledaddress>{list[i].address}</Styledaddress>
+              <Styledaddress>{list[i].location}</Styledaddress>
 
               <StyledPrice>
                 <Cost co="#505050">시작가</Cost>
                 <Cost co="#505050">
-                  {list[i].strprice.toLocaleString("en")}
+                  {list[i].startPrice.toLocaleString("en")}
                 </Cost>
               </StyledPrice>
               <StyledPrice>
                 <Cost co="#505050">즉시 구입가</Cost>
                 <Cost co="#505050">
-                  {list[i].buyprice.toLocaleString("en")}
+                  {list[i].instantPrice.toLocaleString("en")}
                 </Cost>
               </StyledPrice>
               <StyledPrice>
                 <Cost co="#0000D8">현재가</Cost>
                 <Cost co="#0000D8">
-                  {list[i].nowprice.toLocaleString("en")}
+                  아직 없음
+                  {/* {list[i].winningPrice.toLocaleString("en")} */}
                 </Cost>
               </StyledPrice>
             </StyledBody>
@@ -134,7 +144,9 @@ export default function List() {
       ))}
     </Row>
   );
-}
+};
+
 const handleError = (e) => {
   e.target.src = pa;
 };
+export default List;

@@ -1,5 +1,7 @@
-import { useState } from "react";
+import axios from "axios";
+import { useEffect, useState } from "react";
 import { Container, Tabs, Tab } from "react-bootstrap";
+import { useNavigate } from "react-router-dom";
 
 import styled from "styled-components";
 import {
@@ -62,16 +64,28 @@ const TabTitle = styled.div`
   letter-spacing: -0.025em;
   margin-bottom: 20px;
 `;
-export default function Detail() {
+const Detail = () => {
+  let [list, setList] = useState([]);
+  useEffect(() => {
+    const getList = () => {
+      axios
+        .get("/api/auction")
+        .then((response) => {
+          setList(response.data);
+        })
+        .catch(() => console.log("실패"));
+    };
+    getList();
+  }, []);
+  console.log(list);
   return (
     <StyledContainer>
       <Caption>
         <Name>전체</Name>
       </Caption>
-
       <ImgBox />
       <TextBox>
-        <Title>블루투스 이어폰+블루투스 스피커+블랙박스</Title>
+        <Title>{}</Title>
         <Adress>경기도 고양시 일단동구 백석동</Adress>
         <Boxes>
           <Box wi="300px" he="80px" bg="#0000d8" pa="12px 0">
@@ -145,7 +159,7 @@ export default function Detail() {
       <ControlledTabs />
     </StyledContainer>
   );
-}
+};
 function ControlledTabs() {
   const [key, setKey] = useState("info");
 
@@ -230,3 +244,5 @@ function ControlledTabs() {
     </StyledTabs>
   );
 }
+
+export default Detail;

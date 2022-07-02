@@ -15,11 +15,9 @@ export default function HomeContainer() {
       <Caption>진행중인 경매</Caption>
       <More>진행중인 경매 더보기 ▶</More>
       <HomeList />
-
       <Caption>임박매물</Caption>
       <More>임박매물 더보기 ▶</More>
       <HomeList />
-
       <Caption>인기매물</Caption>
       <More>인기매물 더보기 ▶</More>
       <HomeList />
