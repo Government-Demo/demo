@@ -14,6 +14,8 @@ public class AuctionDto {
   @AllArgsConstructor
   public static class ListResponse {
 
+    private Long id;
+
     private List<CategoriesResponse> categories;
 
     private String title;

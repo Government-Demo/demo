@@ -15,7 +15,7 @@ public class AuctionReaderImpl implements AuctionReader {
   private final AuctionRepository auctionRepository;
 
   @Override
-  public List<Auction> FindAuctionList() {
+  public List<Auction> findAuctionList() {
     return auctionRepository.findAll();
   }
 }

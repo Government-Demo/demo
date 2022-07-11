@@ -13,6 +13,6 @@ public class AuctionServiceImpl implements AuctionService {
 
   @Override
   public List<AuctionInfo.Main> auctionList() {
-    return auctionInfoMapper.of(auctionReader.FindAuctionList());
+    return auctionInfoMapper.of(auctionReader.findAuctionList());
   }
 }

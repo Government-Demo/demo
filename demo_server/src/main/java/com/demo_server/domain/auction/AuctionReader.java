@@ -4,5 +4,5 @@ import java.util.List;
 
 public interface AuctionReader {
 
-  List<Auction> FindAuctionList();
+  List<Auction> findAuctionList();
 }

@@ -14,6 +14,8 @@ public class AuctionInfo {
   @AllArgsConstructor
   public static class Main {
 
+    private Long id;
+
     private List<CategoriesResponse> categories;
 
     private String title;
