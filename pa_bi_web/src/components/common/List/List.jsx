@@ -1,10 +1,61 @@
-import { useState, useEffect } from "react";
-import axios from "axios";
 import { Row, Col, Card } from "react-bootstrap";
 import { Box, Cost } from "./List.style";
 import styled from "styled-components";
 import pa from "./Pabi.png";
 import { useNavigate } from "react-router-dom";
+
+const List = (props) => {
+  let navigate = useNavigate();
+  // console.log(props.list[0].categories[0]);
+  return (
+    <Row xs={1} md={2} lg={4} className="g-4">
+      {props.list.map((a, i) => (
+        <StyledCol key={i}>
+          <StyledCard>
+            <StyledButton
+              onClick={() => {
+                navigate("/detail/" + props.list[i].id);
+              }}
+            ></StyledButton>
+            <ImgBox>
+              <StyledImg
+                src={props.list[i].img ? props.list[i].img : pa}
+              ></StyledImg>
+            </ImgBox>
+            <StyledBody>
+              <Box>
+                <StyledTitle>{props.list[i].title} </StyledTitle>
+              </Box>
+              <Styledaddress>{props.list[i].location}</Styledaddress>
+
+              <StyledPrice>
+                <Cost co="#505050">시작가</Cost>
+                <Cost co="#505050">
+                  {props.list[i].startPrice.toLocaleString("en")}
+                </Cost>
+              </StyledPrice>
+              <StyledPrice>
+                <Cost co="#505050">즉시 구입가</Cost>
+                <Cost co="#505050">
+                  {props.list[i].instantPrice.toLocaleString("en")}
+                </Cost>
+              </StyledPrice>
+              <StyledPrice>
+                <Cost co="#0000D8">현재가</Cost>
+                <Cost co="#0000D8">
+                  아직 없음
+                  {/* {props.list[i].winningPrice.toLocaleString("en")} */}
+                </Cost>
+              </StyledPrice>
+            </StyledBody>
+          </StyledCard>
+        </StyledCol>
+      ))}
+    </Row>
+  );
+};
+
+export default List;
 
 const StyledButton = styled.button`
   position: absolute;
@@ -85,68 +136,3 @@ const ImgBox = styled.div`
   overflow: hidden;
 `;
 const StyledImg = styled(Card.Img)``;
-
-const List = () => {
-  let [list, setList] = useState([]);
-  let navigate = useNavigate();
-  useEffect(() => {
-    const getList = () => {
-      axios
-        .get("/api/auction")
-        .then((response) => {
-          setList(response.data.data);
-        })
-        .catch(() => console.log("실패"));
-    };
-    getList();
-  }, []);
-  return (
-    <Row xs={1} md={2} lg={4} className="g-4">
-      {list.map((a, i) => (
-        <StyledCol key={i}>
-          <StyledCard>
-            <StyledButton
-              onClick={() => {
-                navigate("/detail/" + i);
-              }}
-            ></StyledButton>
-            <ImgBox>
-              <StyledImg src={list[i].img} onError={handleError}></StyledImg>
-            </ImgBox>
-            <StyledBody>
-              <Box>
-                <StyledTitle>{list[i].title} </StyledTitle>
-              </Box>
-              <Styledaddress>{list[i].location}</Styledaddress>
-
-              <StyledPrice>
-                <Cost co="#505050">시작가</Cost>
-                <Cost co="#505050">
-                  {list[i].startPrice.toLocaleString("en")}
-                </Cost>
-              </StyledPrice>
-              <StyledPrice>
-                <Cost co="#505050">즉시 구입가</Cost>
-                <Cost co="#505050">
-                  {list[i].instantPrice.toLocaleString("en")}
-                </Cost>
-              </StyledPrice>
-              <StyledPrice>
-                <Cost co="#0000D8">현재가</Cost>
-                <Cost co="#0000D8">
-                  아직 없음
-                  {/* {list[i].winningPrice.toLocaleString("en")} */}
-                </Cost>
-              </StyledPrice>
-            </StyledBody>
-          </StyledCard>
-        </StyledCol>
-      ))}
-    </Row>
-  );
-};
-
-const handleError = (e) => {
-  e.target.src = pa;
-};
-export default List;
