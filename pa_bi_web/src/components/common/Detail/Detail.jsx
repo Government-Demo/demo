@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { Container, Tabs, Tab } from "react-bootstrap";
-import { useNavigate } from "react-router-dom";
+import { useParams } from "react-router-dom";
 
 import styled from "styled-components";
 import {
@@ -20,64 +20,21 @@ import {
   NoticeTitle,
 } from "./Detail.style";
 
-const StyledContainer = styled(Container)`
-  max-width: 1280px;
-  .tab-content {
-    font-weight: 400;
-    font-size: 13px;
-    line-height: 22px;
-    letter-spacing: -0.025em;
-    li {
-      margin-left: 10px;
-    }
-  }
-
-  .nav-link {
-    justify-content: center;
-    font-weight: 400;
-    font-size: 15px;
-    line-height: 22px;
-    width: 418.6px;
-    height: 55px;
-    color: #767676;
-  }
-  .nav-link.active {
-    color: #ffffff;
-    background: #0000d8;
-  }
-`;
-const StyledTabs = styled(Tabs)``;
-
-const StyledTab = styled(Tab)`
-  font-weight: 400;
-  font-size: 15px;
-  line-height: 22px;
-  color: #767676;
-  span {
-    line-height: 50px;
-  }
-`;
-const TabTitle = styled.div`
-  font-weight: 500;
-  font-size: 20px;
-  line-height: 29px;
-  letter-spacing: -0.025em;
-  margin-bottom: 20px;
-`;
 const Detail = () => {
-  let [list, setList] = useState([]);
+  let { id } = useParams();
+  let [list, setList] = useState();
   useEffect(() => {
     const getList = () => {
       axios
         .get("/api/auction")
         .then((response) => {
-          setList(response.data);
+          setList(response.data.data);
         })
         .catch(() => console.log("실패"));
     };
     getList();
   }, []);
-  console.log(list);
+
   return (
     <StyledContainer>
       <Caption>
@@ -85,8 +42,8 @@ const Detail = () => {
       </Caption>
       <ImgBox />
       <TextBox>
-        <Title>{}</Title>
-        <Adress>경기도 고양시 일단동구 백석동</Adress>
+        <Title>{list && list[id - 1].title}</Title>
+        <Adress>{list && list[id - 1].location}</Adress>
         <Boxes>
           <Box wi="300px" he="80px" bg="#0000d8" pa="12px 0">
             <BoxText si="48px" co="#ffffff">
@@ -124,11 +81,15 @@ const Detail = () => {
         >
           <CostBox>
             <Cost si="20px">시작가</Cost>
-            <Cost si="20px">300,000원</Cost>
+            <Cost si="20px">
+              {list && list[id - 1].startPrice.toLocaleString("en")}원
+            </Cost>
           </CostBox>
           <CostBox>
             <Cost si="20px">즉시구입가</Cost>
-            <Cost si="20px">450,000원</Cost>
+            <Cost si="20px">
+              {list && list[id - 1].instantPrice.toLocaleString("en")}원
+            </Cost>
           </CostBox>
         </Box>
         <Box
@@ -140,11 +101,13 @@ const Detail = () => {
         >
           <CostBox>
             <Cost si="20px">호가</Cost>
-            <Cost si="20px">1,000원</Cost>
+            <Cost si="20px">
+              {list && list[id - 1].winningPrice.toLocaleString("en")}원
+            </Cost>
           </CostBox>
           <CostBox>
             <Cost si="20px">거래방식</Cost>
-            <Cost si="20px">택배/직거래</Cost>
+            <Cost si="20px">{list && list[id - 1].transactionMethod}</Cost>
           </CostBox>
         </Box>
         <NoticeTitle>주의사항</NoticeTitle>
@@ -156,13 +119,17 @@ const Detail = () => {
           희망가와 같거나 높은 금액으로 응찰하면 즉시 낙찰됩니다.
         </Notice>
       </TextBox>
-      <ControlledTabs />
+      <ControlledTabs list={list} />
     </StyledContainer>
   );
 };
-function ControlledTabs() {
-  const [key, setKey] = useState("info");
 
+export default Detail;
+
+function ControlledTabs(props) {
+  const [key, setKey] = useState("info");
+  let { id } = useParams();
+  console.log(props.list);
   return (
     <StyledTabs
       id="controlled-tab-example"
@@ -172,9 +139,7 @@ function ControlledTabs() {
     >
       <StyledTab eventKey="info" title="물품정보">
         <TabTitle>물품정보</TabTitle>
-        JBL 파티박스온더고 블루투스 스피커 미개봉 새제품 입니다 !!! 백석동는
-        직거래 가능하고 나머지 지역은 택배가능합다 ~~~~!!!!! 많은 문의
-        바랄게요!d
+        {props.list && props.list[id - 1].content}
       </StyledTab>
       <StyledTab eventKey="comment" title="판매자에게 문의">
         <TabTitle>판매자에게 문의</TabTitle>
@@ -245,4 +210,48 @@ function ControlledTabs() {
   );
 }
 
-export default Detail;
+// styled component
+const StyledContainer = styled(Container)`
+  max-width: 1280px;
+  .tab-content {
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 22px;
+    letter-spacing: -0.025em;
+    li {
+      margin-left: 10px;
+    }
+  }
+
+  .nav-link {
+    justify-content: center;
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 22px;
+    width: 418.6px;
+    height: 55px;
+    color: #767676;
+  }
+  .nav-link.active {
+    color: #ffffff;
+    background: #0000d8;
+  }
+`;
+const StyledTabs = styled(Tabs)``;
+
+const StyledTab = styled(Tab)`
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 22px;
+  color: #767676;
+  span {
+    line-height: 50px;
+  }
+`;
+const TabTitle = styled.div`
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 29px;
+  letter-spacing: -0.025em;
+  margin-bottom: 20px;
+`;
