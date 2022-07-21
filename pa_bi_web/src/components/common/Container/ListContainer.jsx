@@ -6,33 +6,56 @@ import List from "../List/List";
 import Pagination from "../Paginate/Pagination";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import { useLocation } from "react-router-dom";
 
 const StyledContainer = styled(Container)`
   max-width: 1280px;
 `;
 
 export default function ListContainer() {
-  let [list, setList] = useState([]);
+  let [lists, setLists] = useState([]);
+  const location = useLocation();
   useEffect(() => {
     const getList = () => {
       axios
         .get("/api/auction")
         .then((response) => {
-          setList(response.data.data);
+          setLists(response.data.data);
         })
         .catch(() => console.log("실패"));
     };
     getList();
   }, []);
-
+  function Title() {
+    switch (location.pathname) {
+      case "/item/all":
+        return <Name>전체</Name>;
+      case "/item/life":
+        return <Name>홈/생활</Name>;
+      case "/item/digital":
+        return <Name>디지털/가전</Name>;
+      case "/item/clothes":
+        return <Name>패션의류/잡화</Name>;
+      case "/item/beauty":
+        return <Name>뷰티/주얼리</Name>;
+      case "/item/car":
+        return <Name>자동차/아웃도어</Name>;
+      case "/item/hobby":
+        return <Name>취미/스포츠</Name>;
+      case "/item/etc":
+        return <Name>기타중고물품</Name>;
+      default:
+        return <Name>전체</Name>;
+    }
+  }
   return (
     <StyledContainer>
       <Caption>
-        <Name></Name>
-        <Count>({list.length})</Count>
+        {Title()}
+        <Count>({lists.length})</Count>
         <SelectBox options={OPTIONS}></SelectBox>
       </Caption>
-      <List list={list} />
+      <List lists={lists} />
 
       <Paginate />
       {/* <Pagination /> */}
