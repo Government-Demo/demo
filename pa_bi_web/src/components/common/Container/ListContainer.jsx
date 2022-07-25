@@ -48,14 +48,52 @@ export default function ListContainer() {
         return <Name>전체</Name>;
     }
   }
+  function Category() {
+    switch (location.pathname) {
+      case "/item/all":
+        return "전체";
+      case "/item/life":
+        return "홈/생활";
+      case "/item/digital":
+        return "디지털/가전";
+      case "/item/clothes":
+        return "패션의류/잡화";
+      case "/item/beauty":
+        return "뷰티/주얼리";
+      case "/item/car":
+        return "자동차/아웃도어";
+      case "/item/hobby":
+        return "취미/스포츠";
+      case "/item/etc":
+        return "기타중고물품";
+      default:
+        alert("잘못된 접근입니다");
+    }
+  }
   return (
     <StyledContainer>
       <Caption>
         {Title()}
-        <Count>({lists.length})</Count>
+        <Count>
+          (
+          {
+            lists.filter(
+              Category() === "전체"
+                ? (list) => list
+                : (list) => list.categories[0]?.category.name === Category()
+            ).length
+          }
+          )
+        </Count>
         <SelectBox options={OPTIONS}></SelectBox>
       </Caption>
-      <List lists={lists} />
+      <List
+        lists={lists.filter(
+          Category() === "전체"
+            ? (list) => list
+            : (list) => list.categories[0]?.category.name === Category()
+        )}
+      />
 
       <Paginate />
       {/* <Pagination /> */}
