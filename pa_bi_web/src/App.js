@@ -12,7 +12,11 @@ import Item from "./pages/Item/Item";
 import All from "./pages/Item/Category/All";
 import Digital from "./pages/Item/Category/Digital";
 import Life from "./pages/Item/Category/Life";
-import List from "./components/common/List/List";
+import Etc from "./pages/Item/Category/Etc";
+import Hobby from "./pages/Item/Category/Hobby";
+import Car from "./pages/Item/Category/Car";
+import Beauty from "./pages/Item/Category/Beauty";
+import Clothes from "./pages/Item/Category/Clothes";
 
 function App() {
   return (
@@ -24,14 +28,13 @@ function App() {
       <Route path="/detail/:id" element={<DetailPage />} />
       <Route path="/item" element={<Item />}>
         <Route path="all" element={<All />} />
+        <Route path="life" element={<Life />} />
         <Route path="digital" element={<Digital />} />
-        <Route path="Life" element={<Life />} />
-
-        {/* <Route path="/clothes" element={<Digital />} />
-        <Route path="/beauty" element={<Digital />} />
-        <Route path="/car" element={<Digital />} />
-        <Route path="/hobby" element={<Digital />} />
-        <Route path="/etc" element={<Digital />} /> */}
+        <Route path="clothes" element={<Clothes />} />
+        <Route path="beauty" element={<Beauty />} />
+        <Route path="car" element={<Car />} />
+        <Route path="hobby" element={<Hobby />} />
+        <Route path="etc" element={<Etc />} />
       </Route>
       <Route path="/" element={<Home />} />
       <Route path="*" element={<NotFound />} />
