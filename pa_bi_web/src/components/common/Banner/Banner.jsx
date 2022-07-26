@@ -22,7 +22,7 @@ export default function Banner() {
         </Box>
         <Box
           onClick={() => {
-            navigate("/all");
+            navigate("/item/all");
           }}
         >
           진행중인 매물
