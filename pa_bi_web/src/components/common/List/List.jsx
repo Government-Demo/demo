@@ -7,7 +7,6 @@ import { useState } from "react";
 
 const List = (props) => {
   let navigate = useNavigate();
-  const url = useLocation();
 
   return (
     <Row xs={1} md={2} lg={4} className="g-4">

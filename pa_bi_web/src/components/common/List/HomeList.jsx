@@ -2,17 +2,74 @@ import { useState } from "react";
 import { Row, Col, Card } from "react-bootstrap";
 import { Box, Cost, StyledTime } from "./List.style";
 import styled from "styled-components";
-import data from "./ListData";
 import icon from "./장소아이콘.png";
 import heart from "./하트.png";
 import clock from "./Clock.png";
 import pa from "./Pabi.png";
+import { Navigate } from "react-router-dom";
+
+const HomeList = (props) => {
+  let [wish, setwish] = useState(0);
+  return (
+    <Row xs={1} md={2} lg={4} className="g-4">
+      {props.lists.map((a, list) => (
+        <StyledCol key={list}>
+          <StyledCard
+          // onClick={() => {
+          //   Navigate("/detail/" + props.lists[list].id);
+          // }}
+          >
+            <ImgBox>
+              <StyledImg
+                src={props.lists[list]?.img ? props.lists[list].img : pa}
+              />
+            </ImgBox>
+            <StyledBody>
+              <StyledTitle>{props.lists[list]?.title}</StyledTitle>
+              <Box mb="10px">
+                <img src={icon} alt="address" />
+                <Styledaddress>{props.lists[list]?.location}</Styledaddress>
+                <Styledaddress
+                  onClick={() => {
+                    setwish(wish + 1);
+                  }}
+                >
+                  <img src={heart} alt="heart" />
+                  {wish}
+                </Styledaddress>
+              </Box>
+
+              <StyledPrice>
+                <Cost co="#0000D8">
+                  현재가
+                  <br />
+                  <Cost co="#0000D8" we="500" si="24px" he="28px">
+                    100,000
+                    {/* {props.lists[list]?.winningPrice.toLocaleString("en")} */}
+                  </Cost>
+                </Cost>
+
+                <StyledTime>
+                  <img src={clock} alt="clock" />
+                  03:21:18
+                </StyledTime>
+              </StyledPrice>
+            </StyledBody>
+          </StyledCard>
+        </StyledCol>
+      ))}
+    </Row>
+  );
+};
+
+export default HomeList;
 
 const StyledCol = styled(Col)`
   padding: 4px;
 `;
 const StyledCard = styled(Card)`
   border-radius: 20px;
+  margin: 10px;
   cursor: pointer;
   &:hover {
     background: rgba(220, 220, 255, 0.5);
@@ -24,7 +81,7 @@ const StyledCard = styled(Card)`
   }
 `;
 const StyledBody = styled(Card.Body)`
-  padding: 20px;
+  padding: 10px 20px 20px;
 `;
 const StyledTitle = styled(Card.Title)`
   font-size: 16px;
@@ -63,60 +120,6 @@ const ImgBox = styled.div`
   overflow: hidden;
 `;
 const StyledImg = styled(Card.Img)`
-  border-radius: 20px;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
 `;
-
-export default function HomeList() {
-  let [list] = useState(data);
-  let [wish, setwish] = useState(0);
-  return (
-    <Row xs={1} md={2} lg={4} className="g-4">
-      {Array.from({ length: 4 }).map((a, i) => (
-        <StyledCol key={list[i].id}>
-          <StyledCard>
-            <ImgBox>
-              <StyledImg
-                variant="top"
-                src={list[i].img}
-                onError={handleError}
-              />
-            </ImgBox>
-            <StyledBody>
-              <StyledTitle>{list[i].title}</StyledTitle>
-              <Box>
-                <img src={icon} alt="address" />
-                <Styledaddress>{list[i].address}</Styledaddress>
-                <Styledaddress
-                  onClick={() => {
-                    setwish(wish + 1);
-                  }}
-                >
-                  <img src={heart} alt="heart" />
-                  {wish}
-                </Styledaddress>
-              </Box>
-
-              <StyledPrice>
-                <Cost co="#0000D8">
-                  현재가
-                  <br />
-                  <Cost co="#0000D8" we="500" si="24px" he="28px">
-                    {list[i].nowprice.toLocaleString("en")}
-                  </Cost>
-                </Cost>
-
-                <StyledTime>
-                  <img src={clock} alt="clock" />
-                  03:21:18
-                </StyledTime>
-              </StyledPrice>
-            </StyledBody>
-          </StyledCard>
-        </StyledCol>
-      ))}
-    </Row>
-  );
-}
-const handleError = (e) => {
-  e.target.src = pa;
-};

@@ -23,4 +23,5 @@ export const More = styled.div`
   border-bottom: 1px solid #dbdbdb;
   margin-bottom: 10px;
   padding-bottom: 20px;
+  cursor: pointer;
 `;
