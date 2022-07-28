@@ -12,7 +12,7 @@ const HomeList = (props) => {
   let [wish, setwish] = useState(0);
   return (
     <Row xs={1} md={2} lg={4} className="g-4">
-      {props.lists.map((a, list) => (
+      {props.lists.slice(0, 4).map((a, list) => (
         <StyledCol key={list}>
           <StyledCard
           // onClick={() => {
@@ -30,9 +30,9 @@ const HomeList = (props) => {
                 <img src={icon} alt="address" />
                 <Styledaddress>{props.lists[list]?.location}</Styledaddress>
                 <Styledaddress
-                  onClick={() => {
-                    setwish(wish + 1);
-                  }}
+                // onClick={() => {
+                //   setwish(wish + 1);
+                // }}
                 >
                   <img src={heart} alt="heart" />
                   {wish}
