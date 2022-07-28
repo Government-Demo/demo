@@ -20,14 +20,22 @@ export default function Write() {
       <Box>
         <Cell>
           <Title>물품</Title>
-          <Form placeholder="내용을 입력하세요" wi="365px"></Form>
+          <Form placeholder="내용을 입력하세요" wi="365px" required></Form>
         </Cell>
         <Cell>
           <Title>카테고리</Title>
           <SelectBox options={OPTIONS}></SelectBox>
         </Cell>
         <Cell>
-          <Title>대표이미지</Title>
+          <Title>이미지</Title>
+          <form encType="multipart/form-data">
+            <label htmlFor="file">이미지업로드</label>
+            <input
+              type="file"
+              id="file"
+              accept="image/jpg, image/jpeg, image/png"
+            />
+          </form>
         </Cell>
         <Cell>
           <Title>주소</Title>
@@ -77,6 +85,7 @@ export default function Write() {
           <Form placeholder="내용을 입력하세요" wi="365px"></Form>
         </Cell>
       </Box>
+      <input type="submit" />
     </StyledContainer>
   );
 }
