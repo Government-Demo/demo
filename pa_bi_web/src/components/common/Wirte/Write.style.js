@@ -33,7 +33,13 @@ export const Title = styled.div`
   font-size: 14px;
   letter-spacing: -0.025em;
   width: 110px;
+  :after {
+    color: #e32;
+    content: "*";
+    display: inline;
+  }
 `;
+
 export const Form = styled.input`
   width: ${(props) => props.wi};
   height: 35px;
