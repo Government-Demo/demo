@@ -9,11 +9,26 @@ import {
 } from "./Write.style";
 import { Container } from "react-bootstrap";
 import styled from "styled-components";
+import React, { useState } from "react";
 const StyledContainer = styled(Container)`
   max-width: 1280px;
 `;
 
 export default function Write() {
+  //파일 미리볼 url을 저장해줄 state
+  const [fileImage, setFileImage] = useState("");
+
+  // 파일 저장
+  const saveFileImage = (e) => {
+    setFileImage(URL.createObjectURL(e.target.files[0]));
+  };
+
+  // 파일 삭제
+  const deleteFileImage = () => {
+    URL.revokeObjectURL(fileImage);
+    setFileImage("");
+  };
+
   return (
     <StyledContainer>
       <Header>중고경매 글쓰기</Header>
@@ -28,14 +43,42 @@ export default function Write() {
         </Cell>
         <Cell>
           <Title>이미지</Title>
-          <form encType="multipart/form-data">
-            <label htmlFor="file">이미지업로드</label>
-            <input
-              type="file"
-              id="file"
-              accept="image/jpg, image/jpeg, image/png"
-            />
-          </form>
+          <div>
+            {fileImage && (
+              <img
+                alt="sample"
+                src={fileImage}
+                style={{ margin: "auto", width: "150px", height: "150px" }}
+              />
+            )}
+            <div
+              style={{
+                alignItems: "center",
+                justifyContent: "center",
+              }}
+            >
+              <input
+                name="imgUpload"
+                type="file"
+                accept="image/*"
+                multiple="multiple"
+                onChange={saveFileImage}
+              />
+
+              <button
+                style={{
+                  backgroundColor: "gray",
+                  color: "white",
+                  width: "55px",
+                  height: "40px",
+                  cursor: "pointer",
+                }}
+                onClick={() => deleteFileImage()}
+              >
+                삭제
+              </button>
+            </div>
+          </div>
         </Cell>
         <Cell>
           <Title>주소</Title>
@@ -99,8 +142,8 @@ const OPTIONS = [
   { value: "etc", name: "기타중고물품" },
 ];
 const METHOD = [
-  { value: "package", name: "택배" },
   { value: "direct", name: "직거래" },
+  { value: "package", name: "택배" },
   { value: "package/direct", name: "택배/직거래" },
 ];
 const SelectBox = (props) => {
